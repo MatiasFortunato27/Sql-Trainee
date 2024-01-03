@@ -1,0 +1,100 @@
+show databases;
+CREATE DATABASE IF NOT EXISTS world;
+use world;
+CREATE TABLE IF NOT EXISTS country_languages (
+    country_id INT,
+    language_id INT,
+    PRIMARY KEY (country_id, language_id),
+    FOREIGN KEY (country_id) REFERENCES countries(country_id),
+    FOREIGN KEY (language_id) REFERENCES languages(language_id)
+);
+INSERT INTO countries (country_name) VALUES
+    ('Argentina'),
+    ('Brazil'),
+    ('Spain'),
+    ('United States');
+
+-- Ejemplo de datos de prueba para ciudades
+INSERT INTO cities (city_name, country_id) VALUES
+    ('Buenos Aires', 1),
+    ('Rio de Janeiro', 2),
+    ('Madrid', 3),
+    ('New York', 4);
+
+-- Ejemplo de datos de prueba para idiomas
+INSERT INTO languages (language_name) VALUES
+    ('Spanish'),
+    ('Portuguese'),
+    ('English');
+
+-- Ejemplo de relación entre países e idiomas
+INSERT INTO country_languages (country_id, language_id) VALUES
+    (1, 1), -- Argentina habla español
+    (2, 2), -- Brazil habla portugués
+    (3, 1), -- Spain habla español
+    (4, 3); -- United States habla inglés
+    show tables;
+    CREATE TABLE IF NOT EXISTS cities (
+    city_id INT PRIMARY KEY AUTO_INCREMENT,
+    city_name VARCHAR(255) NOT NULL,
+    country_id INT,
+    FOREIGN KEY (country_id) REFERENCES countries(country_id)
+
+);
+select * from cities;
+create database sql_intro;
+describe cities;
+show databases;
+use sql_intro;
+create table emp_details ( Name varchar(50), Age int, sex char(1), dat_ofjoin date, city varchar(50), salary float);
+show tables;
+select * from emp_details; 
+
+insert into emp_details values 
+('Juan Pérez', 30, "M", '1992-05-15', 'Ciudad de México', 50000.00),
+
+
+('María González', 25, "F", '1997-08-22', 'Buenos Aires', 45000.00),
+
+
+('Carlos Ramírez', 28, "M", '1994-11-10', 'Madrid', 48000.00),
+
+
+('Ana Martínez', 35, "F", '1987-03-18', 'Barcelona', 55000.00),
+
+
+('Pedro Rodríguez', 32, "M", '1990-09-05', 'Lima', 52000.00);
+
+select distinct city from emp_details;
+select count(name) as count_name from emp_details;
+select sum(salary) as sum_salary from emp_details;
+select avg(salary) as average_salary from emp_details;
+
+select name, age, city from emp_details;
+
+select * from emp_details where age>30;
+
+select * from emp_details where sex= "F";
+
+select * from emp_details where 
+city = "Buenos Aires" or city= "Barcelona";
+
+select * from emp_details where 
+city in ('Buenos Aires','Barcelona');
+
+select * from emp_details where 
+Name like '%Ana%';
+
+select * from emp_details;
+
+select * from emp_details where age > 30 and sex = 'F';
+
+select * from emp_details;
+
+use sql_intro;
+
+select count(name) as countname from emp_details;
+
+select day(curdate());
+
+select sex , avg(salary) as promedio_factura from emp_details group by sex;
